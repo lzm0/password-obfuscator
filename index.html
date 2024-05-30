@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>Password Obfuscator</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Password Obfuscator</h1>
+      <p>A simple way to describe your password so that no one can remember.</p>
+    </header>
+    <main>
+      <input type="password" id="password" placeholder="Enter your password" />
+      <div id="keys"></div>
+    </main>
+    <footer>Created by <a href="https://zimo.li/">zimo.li</a></footer>
+  </body>
+  <script>
+    const password = document.getElementById("password");
+    const keys = document.getElementById("keys");
+
+    password.addEventListener("input", () => {
+      keys.innerHTML = password.value
+        .split("")
+        .map((char) => {
+          if (char === " ") char = "Space";
+          return `<kbd>${char}</kbd> `;
+        })
+        .join("");
+    });
+  </script>
+</html>
